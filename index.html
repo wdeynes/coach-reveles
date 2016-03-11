@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<title>Coach Revels Sports Camps</title>
+<script src="lightbox/js/jquery-1.11.0.min.js"></script>
+<script src="lightbox/js/lightbox.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<link rel="stylesheet" type="text/css" href="lightbox/css/lightbox.css"/>
+  <meta name="description" content="Coach Revals Sports Camps">
+  <meta name="author" content="Creative Design Consultants">
+<style type="text/css">.invisible {display: none;}
+.visible {display:block;}</style> 
+<script> function toggleClass(el){ if(el.className == "invisible"){ el.className = "visible"; } else { el.className = "invisible"; } } </script>
+
+    <script type="text/javascript">
+
+        function Change_Class_Name(My_Element, My_Class) {
+
+            My_Element.className = My_Class;
+
+        }
+
+    </script>
+	<!-- Add jQuery library -->
+	<script type="text/javascript" src="fancyBox/lib/jquery-1.10.1.min.js"></script>
+
+	<!-- Add mousewheel plugin (this is optional) -->
+	<script type="text/javascript" src="fancyBox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+
+	<!-- Add fancyBox main JS and CSS files -->
+	<script type="text/javascript" src="fancyBox/source/jquery.fancybox.js?v=2.1.5"></script>
+	<link rel="stylesheet" type="text/css" href="fancyBox/source/jquery.fancybox.css" media="screen" />
+
+	<!-- Add Button helper (this is optional) -->
+	<link rel="stylesheet" type="text/css" href="fancyBox/source/helpers/jquery.fancybox-buttons-v=1.0.5.css" />
+	<script type="text/javascript" src="fancyBox/source/helpers/jquery.fancybox-buttons.js?v=1.0.5"></script>
+
+	<!-- Add Thumbnail helper (this is optional) -->
+	<link rel="stylesheet" type="text/css" href="fancyBox/source/helpers/jquery.fancybox-thumbs-v=1.0.7.css" />
+	<script type="text/javascript" src="fancyBox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+
+	<!-- Add Media helper (this is optional) -->
+	<script type="text/javascript" src="fancyBox/source/helpers/jquery.fancybox-media.js?v=1.0.6"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+			 *  Simple image gallery. Uses default settings
+			 */
+
+			$('.fancybox').fancybox();
+
+			/*
+			 *  Different effects
+			 */
+
+			// Change title type, overlay closing speed
+			$(".fancybox-effects-a").fancybox({
+				helpers: {
+					title : {
+						type : 'outside'
+					},
+					overlay : {
+						speedOut : 0
+					}
+				}
+			});
+
+			// Disable opening and closing animations, change title type
+			$(".fancybox-effects-b").fancybox({
+				openEffect  : 'none',
+				closeEffect	: 'none',
+
+				helpers : {
+					title : {
+						type : 'over'
+					}
+				}
+			});
+
+			// Set custom style, close if clicked, change title type and overlay color
+			$(".fancybox-effects-c").fancybox({
+				wrapCSS    : 'fancybox-custom',
+				closeClick : true,
+
+				openEffect : 'none',
+
+				helpers : {
+					title : {
+						type : 'inside'
+					},
+					overlay : {
+						css : {
+							'background' : 'rgba(238,238,238,0.85)'
+						}
+					}
+				}
+			});
+
+			// Remove padding, set opening and closing animations, close if clicked and disable overlay
+			$(".fancybox-effects-d").fancybox({
+				padding: 0,
+
+				openEffect : 'elastic',
+				openSpeed  : 150,
+
+				closeEffect : 'elastic',
+				closeSpeed  : 150,
+
+				closeClick : true,
+
+				helpers : {
+					overlay : null
+				}
+			});
+
+			/*
+			 *  Button helper. Disable animations, hide close button, change title type and content
+			 */
+
+			$('.fancybox-buttons').fancybox({
+				openEffect  : 'none',
+				closeEffect : 'none',
+
+				prevEffect : 'none',
+				nextEffect : 'none',
+
+				closeBtn  : false,
+
+				helpers : {
+					title : {
+						type : 'inside'
+					},
+					buttons	: {}
+				},
+
+				afterLoad : function() {
+					this.title = 'Image ' + (this.index + 1) + ' of ' + this.group.length + (this.title ? ' - ' + this.title : '');
+				}
+			});
+
+
+			/*
+			 *  Thumbnail helper. Disable animations, hide close button, arrows and slide to next gallery item if clicked
+			 */
+
+			$('.fancybox-thumbs').fancybox({
+				prevEffect : 'none',
+				nextEffect : 'none',
+
+				closeBtn  : false,
+				arrows    : false,
+				nextClick : true,
+
+				helpers : {
+					thumbs : {
+						width  : 50,
+						height : 50
+					}
+				}
+			});
+
+			/*
+			 *  Media helper. Group items, disable animations, hide arrows, enable media and button helpers.
+			*/
+			$('.fancybox-media')
+				.attr('rel', 'media-gallery')
+				.fancybox({
+					openEffect : 'none',
+					closeEffect : 'none',
+					prevEffect : 'none',
+					nextEffect : 'none',
+
+					arrows : false,
+					helpers : {
+						media : {},
+						buttons : {}
+					}
+				});
+
+			/*
+			 *  Open manually
+			 */
+
+			$("#fancybox-manual-a").click(function() {
+				$.fancybox.open('1_b.jpg');
+			});
+
+			$("#fancybox-manual-b").click(function() {
+				$.fancybox.open({
+					href : 'iframe.html',
+					type : 'iframe',
+					padding : 5
+				});
+			});
+
+			$("#fancybox-manual-c").click(function() {
+				$.fancybox.open([
+					{
+						href : '1_b.jpg',
+						title : 'My title'
+					}, {
+						href : '2_b.jpg',
+						title : '2nd title'
+					}, {
+						href : '3_b.jpg'
+					}
+				], {
+					helpers : {
+						thumbs : {
+							width: 75,
+							height: 50
+						}
+					}
+				});
+			});
+
+
+		});
+	</script>
+	<style type="text/css">
+		.fancybox-custom .fancybox-skin {
+			box-shadow: 0 0 50px #222;
+            padding: 5px;
+		}
+        .fancybox-skin {
+		   padding: 5px !important;
+		}
+		
+	</style>
+    </head>
+
+<body>
+    <div class="wrapper">
+    <div class="header"><img src="assets/CRSC_Logo_white.png" alt="Coach Revals Sports Camp Logo"></div>
+    <nav>
+                <p id="tagline">&nbsp; &nbsp;Preparing today for the season ahead.</p>
+        <ul>
+        <li><a class="fancybox fancybox.iframe" href="aboutthecamp.html"><!--<span class="currentlink">-->About CRSC<!--</span>--></a></li>
+        <li><a class="fancybox fancybox.iframe" href="coachinfo.html">About Coach Revels</a></li>
+        <li><a class="fancybox fancybox.iframe" href="campinfo.html">Camp Information</a></li>
+        <li><a target="_blank"; href="info/Registration%20Form1.pdf">Registration Form(Football)</a></li>
+        <li><a target="_blank"; href="info/Registration%20Form2.pdf">Registration Form(Basketball)</a></li>
+      <!--  <li><a href="images/Football/1.jpg" data-lightbox="football">Football Photo Gallery</a></li>-->
+        <li><a href="images/Basketball/1.jpg" data-lightbox="Basketball">Basketball Photo Gallery</a></li>
+        <!--<li><a target="_blank"; href="sponsors.html">Sponsorship Opportunities</a></li>-->
+        <!--<li><a href="">Employment Opportunities</a></li>-->
+        </ul></nav>
+    <div class="content">
+    <div id="contactform"  class="invisible">
+<!--        <form action="MAILTO:coachrevels@camprevels.com" method="post" enctype="text/plain">
+Name:<br>
+<input type="text" name="name" value="your name"><br>
+E-mail:<br>
+<input type="text" name="mail" value="your email"><br>
+Comment:<br>
+<input type="text" name="comment" value="your comment" size="50"><br><br>
+<input type="submit" value="Send">
+<input type="reset" value="Reset">-->
+            
+<img src="lightbox/img/close.png" value="Close" onclick="Change_Class_Name(contactform, 'invisible');" >
+        <br />
+<a id="foxyform_embed_link_613429" href="http://www.foxyform.com/">foxyform</a>
+<script type="text/javascript">
+(function(d, t){
+   var g = d.createElement(t),
+       s = d.getElementsByTagName(t)[0];
+   g.src = "http://www.foxyform.com/js.php?id=613429&sec_hash=acbf9fd925d&width=350px";
+   s.parentNode.insertBefore(g, s);
+}(document, "script"));
+</script>
+            
+</form>
+        </div>
+
+    <div class="push"></div>
+    </div>
+    <div class="footer"></div>
+    </div>
+    <a href="images/Football/2.jpg" data-lightbox="football"></a>
+    <a href="images/Football/4.jpg" data-lightbox="football"></a>
+    <a href="images/Football/6.jpg" data-lightbox="football"></a>
+    <a href="images/Football/7.jpg" data-lightbox="football"></a>
+    <a href="images/Football/8.jpg" data-lightbox="football"></a>
+    <a href="images/Football/9.jpg" data-lightbox="football"></a>
+    <a href="images/Football/10.jpg" data-lightbox="football"></a>
+    <a href="images/Football/11.jpg" data-lightbox="football"></a>
+    <a href="images/Football/12.jpg" data-lightbox="football"></a>
+    <a href="images/Football/13.jpg" data-lightbox="football"></a>
+    <a href="images/Football/14.jpg" data-lightbox="football"></a>
+    <a href="images/Football/15.jpg" data-lightbox="football"></a>
+    <a href="images/Football/16.jpg" data-lightbox="football"></a>
+    <a href="images/Football/17.jpg" data-lightbox="football"></a>
+    <a href="images/Football/18.jpg" data-lightbox="football"></a>
+    <a href="images/Football/19.jpg" data-lightbox="football"></a>
+    <a href="images/Football/20.jpg" data-lightbox="football"></a>
+    <a href="images/Football/21.jpg" data-lightbox="football"></a>
+    <a href="images/Football/a.jpg" data-lightbox="football"></a>
+    <a href="images/Basketball/2.jpg" data-lightbox="Basketball"></a>
+    <a href="images/Basketball/3.jpg" data-lightbox="Basketball"></a>
+    <a href="images/Basketball/4.jpg" data-lightbox="Basketball"></a>
+    <a href="images/Basketball/5.jpg" data-lightbox="Basketball"></a>
+    <a href="images/Basketball/6.jpg" data-lightbox="Basketball"></a>
+    <a href="images/Basketball/7.jpg" data-lightbox="Basketball"></a>
+    <a href="images/Basketball/8.jpg" data-lightbox="Basketball"></a>
+    <a href="images/Basketball/9.jpg" data-lightbox="Basketball"></a>
+    <a href="images/Basketball/10.jpg" data-lightbox="Basketball"></a>
+    <a href="images/Basketball/11.jpg" data-lightbox="Basketball"></a>
+    <a href="images/Basketball/12.jpg" data-lightbox="Basketball"></a>
+    <a href="images/Basketball/13.jpg" data-lightbox="Basketball"></a>
+    <a href="images/Basketball/14.jpg" data-lightbox="Basketball"></a>
+    <a href="images/Basketball/15.jpg" data-lightbox="Basketball"></a>
+    <a href="images/Basketball/a.jpg" data-lightbox="Basketball"></a>
+</body>
+</html>
+<!-- Localized -->
